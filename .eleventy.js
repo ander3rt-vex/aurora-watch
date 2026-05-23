@@ -1,8 +1,8 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
 
-  // Netlify sets NETLIFY=true automatically; GitHub Pages needs the sub-path prefix
-  const pathPrefix = process.env.NETLIFY ? "/" : "/aurora-watch/";
+  // GitHub Actions always sets GITHUB_ACTIONS=true; everything else (Netlify, local) serves from /
+  const pathPrefix = process.env.GITHUB_ACTIONS === "true" ? "/aurora-watch/" : "/";
 
   return {
     dir: {
