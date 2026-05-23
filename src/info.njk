@@ -40,28 +40,22 @@ bgImagePath: /assets/img/bg-info.jpg
 
 <div class="charts-grid">
   <div class="chart-block">
-    <h3 class="chart-block__heading">PLANETARY K INDEX</h3>
-    <div class="chart-block__img-wrap">
-      <img
-        src="https://services.swpc.noaa.gov/images/animations/planetary-k-index/planetary-k-index.gif"
-        alt="Planetary K-index chart"
-        class="noaa-chart"
-      />
+    <h3 class="chart-block__heading">PLANETARY K INDEX — 72 HR HISTORY</h3>
+    <div class="chart-block__img-wrap chart-canvas-wrap">
+      <canvas id="kp-chart"></canvas>
     </div>
   </div>
 
   <div class="chart-block">
-    <h3 class="chart-block__heading">3 DAY GEOMAGNETIC FORECAST</h3>
-    <div class="chart-block__img-wrap">
-      <img
-        src="https://services.swpc.noaa.gov/images/geospace/3-day-geomag-forecast.png"
-        alt="3-day geomagnetic forecast"
-        class="noaa-chart"
-        onerror="this.src='https://services.swpc.noaa.gov/images/animations/geospace/anim.latest.png'"
-      />
+    <h3 class="chart-block__heading">SOLAR WIND SPEED &amp; IMF Bz — 24 HR</h3>
+    <div class="chart-block__img-wrap chart-canvas-wrap">
+      <canvas id="wind-chart"></canvas>
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="{{ '/assets/js/charts.js' | url }}"></script>
 
 <section class="info-explainer">
   <h2 class="section-heading">UNDERSTANDING THE DATA</h2>
