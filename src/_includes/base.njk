@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | Aurora Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
+</head>
+<body class="page-{{ pageClass }}">
+  <div class="site-bg" style="background-image: url('{{ '/assets/img/' + bgImage | url }}')"></div>
+
+  <header class="site-header">
+    <a href="{{ '/' | url }}" class="logo">AURORA WATCH</a>
+    <nav class="main-nav">
+      <a href="{{ '/' | url }}" class="{{ 'active' if page.url == '/' }}">HOME</a>
+      <a href="{{ '/info/' | url }}" class="{{ 'active' if '/info' in page.url }}">INFO</a>
+      <a href="{{ '/about/' | url }}" class="{{ 'active' if '/about' in page.url }}">ABOUT</a>
+    </nav>
+  </header>
+
+  <div class="kp-bar">
+    <span class="kp-bar__label">KP INDEX:</span>
+    <span class="kp-bar__value kp-dynamic" id="kp-bar-val">{{ spaceweather.kp }}</span>
+    <span class="kp-bar__sep">|</span>
+    <span class="kp-bar__label">SOLAR WIND:</span>
+    <span class="kp-bar__value wind-dynamic" id="wind-bar-val">{{ spaceweather.wind }} km/s</span>
+    <span class="kp-bar__sep">|</span>
+    <span class="kp-bar__label">IMF Bz:</span>
+    <span class="kp-bar__value bz-dynamic" id="bz-bar-val">{{ spaceweather.bz }} nT</span>
+    <a class="kp-bar__link" href="{{ '/info/' | url }}">FULL REPORT &rarr;</a>
+  </div>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>Data sourced from <a href="https://www.spaceweather.gov/" target="_blank" rel="noopener">NOAA Space Weather Prediction Center</a></p>
+    <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">Eleventy</a> &bull; Last build: {{ spaceweather.lastUpdated }}</p>
+  </footer>
+
+  <script src="{{ '/assets/js/weather.js' | url }}"></script>
+</body>
+</html>

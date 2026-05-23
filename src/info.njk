@@ -1,0 +1,86 @@
+---
+layout: base.njk
+title: Space Weather Info
+pageClass: info
+bgImage: bg-info.jpg
+---
+
+<section class="info-panel">
+  <div class="info-panel__header">
+    <div class="info-panel__kp-block">
+      <span class="info-panel__kp-label">KP:</span>
+      <span class="info-panel__kp-value kp-highlight kp-dynamic" id="info-kp">{{ spaceweather.kp }}</span>
+    </div>
+    <h2 class="info-panel__title">SPACE WEATHER CONDITIONS</h2>
+  </div>
+
+  <div class="info-panel__stats">
+    <div class="info-stat">
+      <span class="info-stat__label">SOLAR WIND</span>
+      <span class="info-stat__value wind-dynamic" id="info-wind">{{ spaceweather.wind }} <span class="info-stat__unit">km/sec</span></span>
+    </div>
+    <div class="info-stat">
+      <span class="info-stat__label">IMF Bt / Bz</span>
+      <span class="info-stat__value">
+        Bt <span class="bt-dynamic" id="info-bt">{{ spaceweather.bt }}</span> nT,
+        Bz <span class="bz-dynamic" id="info-bz">{{ spaceweather.bz }}</span> <span class="info-stat__unit">nT</span>
+      </span>
+    </div>
+    <div class="info-stat">
+      <span class="info-stat__label">NOON 10.7cm RADIO FLUX</span>
+      <span class="info-stat__value flux-dynamic" id="info-flux">{{ spaceweather.flux }} <span class="info-stat__unit">sfu</span></span>
+    </div>
+  </div>
+
+  <p class="info-panel__updated">
+    Live data from <a href="https://www.spaceweather.gov/" target="_blank" rel="noopener">spaceweather.gov</a> &mdash;
+    Build time: {{ spaceweather.lastUpdated }}
+  </p>
+</section>
+
+<div class="charts-grid">
+  <div class="chart-block">
+    <h3 class="chart-block__heading">PLANETARY K INDEX</h3>
+    <div class="chart-block__img-wrap">
+      <img
+        src="https://services.swpc.noaa.gov/images/animations/planetary-k-index/planetary-k-index.gif"
+        alt="Planetary K-index chart"
+        class="noaa-chart"
+      />
+    </div>
+  </div>
+
+  <div class="chart-block">
+    <h3 class="chart-block__heading">3 DAY GEOMAGNETIC FORECAST</h3>
+    <div class="chart-block__img-wrap">
+      <img
+        src="https://services.swpc.noaa.gov/images/geospace/3-day-geomag-forecast.png"
+        alt="3-day geomagnetic forecast"
+        class="noaa-chart"
+        onerror="this.src='https://services.swpc.noaa.gov/images/animations/geospace/anim.latest.png'"
+      />
+    </div>
+  </div>
+</div>
+
+<section class="info-explainer">
+  <h2 class="section-heading">UNDERSTANDING THE DATA</h2>
+  <dl class="explainer-list">
+    <div class="explainer-item">
+      <dt>KP INDEX</dt>
+      <dd>A scale from 0–9 measuring global geomagnetic activity. KP ≥ 5 means a geomagnetic storm — aurora may be visible at lower latitudes. KP 9 is extreme.</dd>
+    </div>
+    <div class="explainer-item">
+      <dt>SOLAR WIND SPEED</dt>
+      <dd>Velocity of charged particles streaming from the Sun. Higher speeds (≥ 500 km/s) can compress Earth's magnetosphere and trigger aurora.</dd>
+    </div>
+    <div class="explainer-item">
+      <dt>IMF Bz</dt>
+      <dd>The north-south component of the Interplanetary Magnetic Field. Strongly negative Bz (southward) opens Earth's magnetosphere and fuels geomagnetic storms.</dd>
+    </div>
+    <div class="explainer-item">
+      <dt>10.7cm RADIO FLUX</dt>
+      <dd>A proxy for solar activity. Values above 150 sfu indicate high solar activity. Measured daily at local noon in Ottawa/Penticton.</dd>
+    </div>
+  </dl>
+</section>

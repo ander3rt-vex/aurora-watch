@@ -1,17 +1,13 @@
 {
   "name": "aurora-watch",
-  "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "version": "1.0.0",
+  "description": "Aurora Watch - Space Weather Tracking Website",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "build": "eleventy",
+    "start": "eleventy --serve"
   },
   "dependencies": {
-    "astro": "^6.3.3"
+    "@11ty/eleventy": "^3.0.0",
+    "node-fetch": "^2.7.0"
   }
 }

@@ -1,0 +1,58 @@
+---
+layout: base.njk
+title: Home
+pageClass: home
+bgImage: bg-home.jpg
+---
+
+<section class="hero">
+  <h1 class="hero__title">AURORA WATCH</h1>
+  <p class="hero__tagline">Track space weather. Chase the lights.</p>
+</section>
+
+<section class="home-grid">
+  <div class="home-card home-card--weather">
+    <h2 class="home-card__heading">CURRENT CONDITIONS</h2>
+    <div class="weather-summary">
+      <div class="weather-stat">
+        <span class="weather-stat__label">Planetary K-Index</span>
+        <span class="weather-stat__value kp-highlight kp-dynamic" id="home-kp">{{ spaceweather.kp }}</span>
+      </div>
+      <div class="weather-stat">
+        <span class="weather-stat__label">Solar Wind Speed</span>
+        <span class="weather-stat__value wind-dynamic" id="home-wind">{{ spaceweather.wind }} <small>km/s</small></span>
+      </div>
+      <div class="weather-stat">
+        <span class="weather-stat__label">IMF Bt / Bz</span>
+        <span class="weather-stat__value">
+          <span class="bt-dynamic" id="home-bt">{{ spaceweather.bt }}</span> /
+          <span class="bz-dynamic" id="home-bz">{{ spaceweather.bz }}</span>
+          <small>nT</small>
+        </span>
+      </div>
+      <div class="weather-stat">
+        <span class="weather-stat__label">10.7cm Radio Flux</span>
+        <span class="weather-stat__value flux-dynamic" id="home-flux">{{ spaceweather.flux }} <small>sfu</small></span>
+      </div>
+    </div>
+    <a class="btn" href="{{ '/info/' | url }}">FULL SPACE WEATHER REPORT &rarr;</a>
+  </div>
+
+  <div class="home-card home-card--about">
+    <h2 class="home-card__heading">ABOUT AURORA WATCH</h2>
+    <p>We are passionate sky watchers tracking geomagnetic activity and aurora events. Using real-time data from NOAA's Space Weather Prediction Center, we help you know when and where the northern and southern lights may be visible.</p>
+    <a class="btn" href="{{ '/about/' | url }}">OUR STORY &rarr;</a>
+  </div>
+</section>
+
+<section class="kp-chart-section">
+  <h2 class="section-heading">PLANETARY K-INDEX (3-DAY)</h2>
+  <div class="chart-wrapper">
+    <img
+      src="https://services.swpc.noaa.gov/images/animations/planetary-k-index/planetary-k-index.gif"
+      alt="Planetary K-index 3-day chart from NOAA SWPC"
+      class="noaa-chart"
+    />
+  </div>
+  <p class="chart-source">Source: <a href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener">NOAA Space Weather Prediction Center</a></p>
+</section>
